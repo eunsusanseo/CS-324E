@@ -1,0 +1,8 @@
+//Project description file for es29857_Assignment1.
+
+Self portrait of me completing my CS 324E assignment.
+Used size(), background(), fill(), stroke(), noStroke(), rect(), text(), ellipse(), triangle() and quad() function.
+
+Used transparency for mountain painting.
+
+//End project description

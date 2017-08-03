@@ -1,0 +1,13 @@
+//Project description file for es29857_Assignment2.
+
+Use per-pixel manipulation to create series of filters (Grayscale, contrast, Gaussian blue, edge detection).
+
+Implement input-handling (key presses 0-4) and image buffering.
+
+Create deep copies so that filters do not stack.
+
+Use setup() function to allow loading images of multiple sizes
+
+Use a kernel/convolution matrix when filters requiring neighborhood input are called.
+
+//End project description

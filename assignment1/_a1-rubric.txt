@@ -1,0 +1,10 @@
+//Project Description
+You are to familiarize yourself with Processing or Processing.py by drawing a scene using several shape primitives and shape primitive attributes. The goal is to gain an understanding of the Processing coordinate system and commands while generating a creative artifact.
+
+//Basic Requirements
+Your code will create a static image that is at least 500x500 pixels in size. This scene will contain at minimum: 
+3 types of geometric primitives 
+3 types of stroke weights 
+4 colors
+
+You will also include a short write up explaining what you are depicting and anything interesting in terms of its features. This doesn't have to be long -- it's just to help you analyze and reflect on the process.

@@ -1,0 +1,40 @@
+//Project Description
+In this assignment, you will explore per-pixel manipulation in order to create a series of commonly-used filters. You will also implement basic input-handling and image buffering. Your file will open an image within the Processing window upon clicking "Run." Filters will be applied to this image when the user clicks the number keys. Each filter will be applied individually. That is, filters should not stack, and you will include a key that returns the image to its original state. Extra credit is possible for combining filters in unique ways.
+Basic Requirements
+
+//You will implement functionality for: 
+Image loading 
+Keyboard input-handling 
+A kernel/convolution matrix
+You will then use those features to implement the following filters: 
+Grayscale 
+Contrast 
+Gaussian blur approximation 
+Edge detection
+
+/Image loading: Provide functionality for loading an image. This code should be flexible and load images of multiple sizes, but the Processing window itself should map to the size of any given image. This can be done using a variation of the following code within the setup() function:
+surface.setResizable(true); 
+PImage image = loadImage("foo.png"); 
+surface.setSize(image.width, image.height);
+
+/Keyboard input-handling: The user should be able to input key commands for 1-4 as well as 0. The functionality of each button is described below with the filter it applies. If you want to make additional filters, include additional key inputs and document all extra work within your assignment doc, so the graders know what to expect.
+
+/A kernel/convolution matrix: This convolution matrix will be applied to all pixels when filters requiring neighborhood information are called. Example code is included in the slides, but there are a couple more caveats: 
+Your code should handle the edge pixels in some reasonable way -- a black border is not acceptable. Potential solutions are included in the slides.
+Your code should account for the possibility of the convolution outputting negative values or values that are above the 255 "limit" within each color channel. Failing to do this will lead to wrong (and sometimes outright bizarre!) image manipulations.
+Grayscale: This filter will convert a color image to a grayscale image when the user presses "1". One way to do this is by averaging across all color channels on a per-pixel basis then assigning that value across all three color channels. This roughly preserves the value even if hue and saturation are discarded.
+
+/Contrast: This filter will add higher contrast to an image when the user presses "2". One way to do this is by calculating the brightness (value) of each pixel. If the pixel's brightness is above a threshold value, additional "brightness" is added. If the pixel's brightness is below a threshold value, this brightness is subtracted.
+
+You will experiment to find a good threshold value for testing brightness (or multiple threshold values for more subtle results). You will also choose the brightness to be added and subtracted based on the results of that test.
+
+/Gaussian blur approximation: This filter will approximate a Gaussian Blur when the user presses "3". Since blurring requires neighborhood knowledge of pixels, it will rely on your kernel, or convolution matrix, to extract and manipulate the necessary pixel information. You will need to buffer the updated image in order to prevent your changes to the image from influencing its neightbors.
+
+One possible Gaussian approximation is to use a weight of 0.25 on the current pixel, 0.125 on cardinal neighboring pixels (north, south, east, west), and 0.0625 on diagonal neighboring pixels (north-east, north-west, south-east, south-west), but you can experiment with these values as long as it resembles a Gaussian drop off (i.e. the most weight is on the current pixel, the total weight equals 1, and cardinal neighbors are weighed more heavily than the more "distant" diagonal neighbors).
+
+/Edge detection: This filter will perform edge detection using the Sobel operators when the user presses "4". This filter also requires neighborhood knowledge of pixels, and therefore will also use your kernel. Again, you will need to buffer the updated image to prevent any changes in pixels from influencing their neighbors.
+
+Remember from the class that there are two Sobel operators: horizontal and vertical. To combine these operators, you will determine each pixel's updated value in both the vertical and horizontal directions. You can then take the magnitude and assign that value to the final pixel output. To take the magnitude take the square root of the added squared convolution values.
+
+/No Filter: When the user presses "0" the image should return to its original form. To do this, you might want to create an additional PImage buffer to hold the original image in memory. This can then be swapped into the place of the displaying image (which has the filters applied) when the user requests the original for display.
+
